@@ -121,7 +121,7 @@ namespace mayLCU {
             if (uri[0] != '/') uri = '/' + uri;
             var fullUri = $"https://127.0.0.1:{credentialsPort}{uri}";
             var httpMethod = new HttpMethod(requestMethod.ToString());
-            var httpPayload = new StringContent(payload, Encoding.UTF8, "applicaiton/json");
+            var httpPayload = new StringContent(payload, Encoding.UTF8, "application/json");
             var httpRequest = new HttpRequestMessage(httpMethod, fullUri) {
                 Content = httpPayload
             };
