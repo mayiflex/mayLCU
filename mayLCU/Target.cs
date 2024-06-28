@@ -15,7 +15,7 @@ namespace mayLCU {
             return new Target("LeagueStore", null, null);
         }
         internal static Target RiotClient() {
-            return new Target("RiotClientUx", new Regex("--riotclient-auth-token=(.+?)[\\\"\\s]"), new Regex("--riotclient-app-port=(\\d+)"));
+            return new Target("LeagueClientUx", new Regex("--riotclient-auth-token=(.+?)[\\\"\\s]"), new Regex("--riotclient-app-port=(\\d+)"));
         }
         internal static Target LeagueClient() {
             return new Target("LeagueClientUx", new Regex("--remoting-auth-token=(.+?)[\\\"\\s]"), new Regex("--app-port=(\\d+)"));
