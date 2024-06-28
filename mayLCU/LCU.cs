@@ -11,7 +11,10 @@ using System.Security.Authentication;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
+using System.Web;
 using WebSocketSharp;
+
+
 
 namespace mayLCU {
     public class LCU {
@@ -145,10 +148,10 @@ namespace mayLCU {
         }
 
         public dynamic RequestDynamic(string uri) {
-            return JsonConvert.DeserializeObject<dynamic>(RequestDynamicAsync(uri).GetAwaiter().GetResult());
+            return RequestDynamicAsync(uri).GetAwaiter().GetResult();
         }
         public dynamic RequestDynamic(RequestMethod requestMethod, string uri, string payload = "") {
-            return JsonConvert.DeserializeObject<dynamic>(RequestDynamicAsync(requestMethod, uri, payload).GetAwaiter().GetResult());
+            return RequestDynamicAsync(requestMethod, uri, payload).GetAwaiter().GetResult();
         }
         #endregion
 
