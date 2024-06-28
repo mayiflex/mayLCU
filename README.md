@@ -68,12 +68,25 @@ string response = lcu.Request("/lol-summoner/v1/current-summoner");
 Here are some examples of how you can use `mayLCU`:
 
 ```csharp
+// Hook League Client
 LCU lcu = LCU.HookLeagueClient();
 
 // Get the current summoner's name
 dynamic data = await lcu.RequestDynamicAsync("/lol-summoner/v1/current-summoner");
 string summonerName = data.displayName;
 Console.WriteLine($"Summoner Name: {summonerName}");
+
+```
+```csharp
+// Hook League Client
+LCU leagueClient = LCU.HookLeagueClient();
+
+// Hook League Store using the leagueClient instance
+LCU leagueStoreClient = LCU.HookLeagueStore(leagueClient);
+
+// Example: Make a purchase request
+var httpPayload = $"{{\"accountId\":{accountId},\"items\":[{{\"inventoryType\":\"{type}\",\"itemId\":{itemId},\"ipCost\":null,\"rpCost\":{rpPrice},\"quantity\":1}}]}}"
+dynamic data = await leageuStoreClient.RequestDynamicAsync(RequestMethod.POST, "/storefront/v3/purchase?language=en_US", httpPayload)
 ```
 
 ## Disclaimer
